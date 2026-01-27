@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { CameraCapture } from './components/CameraCapture';
-import { initializeClassifier, PredictionResult } from './services/classifier';
+import { initializeClassifier, type PredictionResult } from './services/classifier';
 import { saveScan } from './services/storage';
 import { ArrowLeft, Share2, Info } from 'lucide-react';
 
@@ -67,7 +67,7 @@ function App() {
               <div className="flex-1 bg-nature-800/50 rounded-xl p-3 text-center border border-nature-600/30">
                 <span className="block text-xs text-nature-300 uppercase tracking-wider mb-1">Severity</span>
                 <span className={`font-bold capitalize ${result.disease.severity === 'high' ? 'text-red-400' :
-                    result.disease.severity === 'medium' ? 'text-orange-400' : 'text-green-400'
+                  result.disease.severity === 'medium' ? 'text-orange-400' : 'text-green-400'
                   }`}>
                   {result.disease.severity}
                 </span>

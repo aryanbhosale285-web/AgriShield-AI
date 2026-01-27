@@ -1,4 +1,4 @@
-import { DiseaseLabel } from './classifier';
+import type { DiseaseLabel } from './classifier';
 
 export interface ScanRecord {
     id: string;

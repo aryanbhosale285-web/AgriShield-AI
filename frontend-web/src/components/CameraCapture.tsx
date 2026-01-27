@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Camera, Upload, Leaf, Loader2 } from 'lucide-react';
 import { classifyImage } from '../services/classifier';
 
@@ -11,7 +11,7 @@ export function CameraCapture({ onCapture, onError }: CameraCaptureProps) {
     const videoRef = useRef<HTMLVideoElement>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const fileInputRef = useRef<HTMLInputElement>(null);
-    const [isStreaming, setIsStreaming] = useState(false);
+    // const [isStreaming, setIsStreaming] = useState(false); // Unused
     const [isProcessing, setIsProcessing] = useState(false);
 
     useEffect(() => {
@@ -26,7 +26,7 @@ export function CameraCapture({ onCapture, onError }: CameraCaptureProps) {
             });
             if (videoRef.current) {
                 videoRef.current.srcObject = stream;
-                setIsStreaming(true);
+                // setIsStreaming(true);
             }
         } catch (err) {
             console.error('Camera error:', err);
@@ -38,7 +38,7 @@ export function CameraCapture({ onCapture, onError }: CameraCaptureProps) {
         if (videoRef.current && videoRef.current.srcObject) {
             const stream = videoRef.current.srcObject as MediaStream;
             stream.getTracks().forEach(track => track.stop());
-            setIsStreaming(false);
+            // setIsStreaming(false);
         }
     };
 

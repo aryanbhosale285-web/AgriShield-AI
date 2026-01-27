@@ -69,7 +69,7 @@ export async function classifyImage(imageElement: HTMLImageElement | HTMLVideoEl
         };
     }
 
-    return tf.tidy(() => {
+    const data = tf.tidy(() => {
         // Preprocess image
         let tensor = tf.browser.fromPixels(imageElement)
             .resizeNearestNeighbor([224, 224]) // Adjust size to match training
@@ -84,20 +84,20 @@ export async function classifyImage(imageElement: HTMLImageElement | HTMLVideoEl
 
         // Predict
         const predictions = model!.predict(batched) as tf.Tensor;
-        const data = predictions.dataSync();
-
-        // Process results
-        const allPredictions = Array.from(data)
-            .map((score, i) => ({
-                label: labels!.labels[i],
-                confidence: score * 100
-            }))
-            .sort((a, b) => b.confidence - a.confidence);
-
-        return {
-            disease: allPredictions[0].label,
-            confidence: allPredictions[0].confidence,
-            allPredictions: allPredictions.slice(0, 5)
-        };
+        return predictions.dataSync();
     });
+
+    // Process results
+    const allPredictions = Array.from(data)
+        .map((score, i) => ({
+            label: labels!.labels[i],
+            confidence: score * 100
+        }))
+        .sort((a, b) => b.confidence - a.confidence);
+
+    return {
+        disease: allPredictions[0].label,
+        confidence: allPredictions[0].confidence,
+        allPredictions: allPredictions.slice(0, 5)
+    };
 }
