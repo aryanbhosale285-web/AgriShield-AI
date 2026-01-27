@@ -1,0 +1,17 @@
+{
+    "modelTopology": {
+        "class_name": "Sequential",
+        "config": {
+            "name": "sequential",
+            "layers": []
+        }
+    },
+    "weightsManifest": [
+        {
+            "paths": [
+                "group1-shard.bin"
+            ],
+            "weights": []
+        }
+    ]
+}
