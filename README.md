@@ -74,7 +74,7 @@ cd frontend
 npm install
 
 # Start Expo development server
-npm start
+npm run dev
 
 # Run on Android
 npm run android
@@ -200,7 +200,7 @@ Get disease distribution statistics
 ### Frontend
 ```bash
 cd frontend
-npm start
+npm run dev
 # Use Expo Go app on your phone
 ```
 

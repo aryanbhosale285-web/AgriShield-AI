@@ -19,7 +19,7 @@ cd frontend
 npm install
 
 # Start Expo dev server
-npm start
+npm run dev
 ```
 
 **On your phone:**
